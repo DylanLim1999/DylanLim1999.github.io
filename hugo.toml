@@ -25,6 +25,17 @@ math = true # for introducing $KaTeX$
 useChineseFonts = true 
 postDateFormat = "2006-1-2"
 
+[params.social]
+# 暂时隐藏所有社交媒体链接
+# bilibili = "http://example.com/"
+# github = "https://github.com/"
+# gitlab = "https://gitlab.com/"
+# instagram = "http://example.com/"
+# mail = "mailto:anon@example.com"
+# twitter = "https://twitter.com/"
+# weibo = "http://example.com/"
+# youtube = "https://youtube.com/"
+# zhihu = "http://example.com/"
 
 [menu]
 # Shown in the side menu.
@@ -54,16 +65,16 @@ category = "categories"
 series = "series"
 tag = "tags"
 
-[params.social]
-bilibili = "http://example.com/"
-github = "https://github.com/"
-gitlab = "https://gitlab.com/"
-instagram = "http://example.com/"
-mail = "mailto:anon@example.com"
-twitter = "https://twitter.com/"
-weibo = "http://example.com/"
-youtube = "https://youtube.com/"
-zhihu = "http://example.com/"
+# [params.social]
+# bilibili = "http://example.com/"
+# github = "https://github.com/"
+# gitlab = "https://gitlab.com/"
+# instagram = "http://example.com/"
+# mail = "mailto:anon@example.com"
+# twitter = "https://twitter.com/"
+# weibo = "http://example.com/"
+# youtube = "https://youtube.com/"
+# zhihu = "http://example.com/"
 # any icon in layouts/partials/svg can be used by the name without the "-line.svg"
 
 [outputs]
