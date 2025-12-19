@@ -1,0 +1,46 @@
+<!-- 自定义样式覆盖 -->
+<style>
+  /* 亮色主题覆盖 */
+  :root {
+    --bg-color-primary: #f7fafc;   /* 主背景色 */
+    --bg-color-secondary: #f0f3f3; /* 次背景色 */
+    --font-primary: "Source Han Sans SC", "Source Han Sans CN", "Noto Sans CJK SC", "Noto Sans", -apple-system, "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+    --text-color-primary: #01513a;   /* 主文字颜色 - 深绿色 */
+    --text-color-secondary: #718096; /* 次文字颜色 - 灰色 */
+    --text-color-tertiary: #2c726e;  /* 第三文字颜色 - 青绿色 */
+    --link-color: #028760;           /* 链接/导航颜色 - 绿色 */
+  }
+
+  /* 标题使用宋体 */
+  h1, h2, h3, h4, h5 {
+    font-family: "Source Han Serif SC", "Source Han Serif CN", "Noto Serif CJK SC", "Songti SC", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
+  }
+
+  /* 代码块样式 */
+  code {
+    font-family: 'Fira Code', 'Cascadia Code', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', 'Sarasa Mono SC', 'Noto Sans CJK SC', 'monospace', monospace;
+    color: #4a5568;
+    border: 1px solid #49beb7;
+  }
+
+  pre code {
+    border: none; /* 代码块内部的 code 不需要边框，由外层 pre 控制 */
+  }
+
+  div.highlight pre {
+    border: 1px solid #49beb7;
+  }
+
+  /* 引用块样式 */
+  blockquote {
+    border-left: 2px solid #49beb7;
+  }
+
+  /* 暗色主题保持默认，如需自定义可在此添加 */
+  /* @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color-primary: #121212;
+      --bg-color-secondary: #1c1f24;
+    }
+  } */
+</style>

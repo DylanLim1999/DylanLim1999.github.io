@@ -1,82 +1,71 @@
+# 站点基础配置
 baseURL = "https://xiaopailang.com/"
+title = "Pi 的龜屋"
 languageCode = "zh-cn"
-title = "小派郎的龜屋"
-defaultContentLanguage = "zh-cn"
-author = "小派郎"
-copyright = "龜屋 © 2025"
-disqusShortname = "xiao-pai-lang-de-gui-wu"
-enableInlineShortcodes = true
-footnoteReturnLinkContents = "^"
-theme = "hugo-theme-tokiwa"
+theme = "hugo-bearneo"
 
-[markup]
-[markup.highlight]
-style = "monokailight"
+# SEO 优化
+enableRobotsTXT = true
 
-[markup.goldmark.renderer]
-unsafe = true
+# 禁用 taxonomy 以生成类似 Bear Blog 的 URL
+disableKinds = ["taxonomy"]
+ignoreErrors = ["error-disable-taxonomy"]
 
+# URL 结构
+[permalinks]
+  blog = "/p/:slug"
+
+# 站点参数
 [params]
-bannerFont = "fonts/exampleFont" 
-description = """ """ 
-env = "production" # for Google Analytics and DISQUS.
-fuse = true # for searchbox. "JSON" must added to output contents. See [outputs].
-math = true # for introducing $KaTeX$
-useChineseFonts = true 
-postDateFormat = "2006-1-2"
+  title = "Pi 的龜屋"
+  description = "Pi 的个人博客"
+  favicon = "favicon.ico"
+  copyright = "龜屋 © 2025"
+  
+  # 文章列表功能
+  groupByYear = true
+  showPostCount = true
+  postSearch = true
+  
+  # 文章页面功能
+  toc = true
+  imageZoom = true
+  
+  # 点赞功能（暂时禁用，需要部署后端服务）
+  upvote = false
+  # upvoteURL = "https://your-upvote-api.com/"
 
-[params.social]
-# 暂时隐藏所有社交媒体链接
-# bilibili = "http://example.com/"
-# github = "https://github.com/"
-# gitlab = "https://gitlab.com/"
-# instagram = "http://example.com/"
-# mail = "mailto:anon@example.com"
-# twitter = "https://twitter.com/"
-# weibo = "http://example.com/"
-# youtube = "https://youtube.com/"
-# zhihu = "http://example.com/"
+  [params.footer]
+    hideCopyright = false
+    hideSitemap = false
+    hideMadeWithLine = false
+    hideRSSAndEmail = false
 
+  [params.RSS]
+    enableRSS = true
+    pageLimit = 10
+
+  [params.author]
+    name = "Pi"
+    # email = "your-email@example.com"
+
+# Markdown 渲染配置
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+# 菜单配置
 [menu]
-# Shown in the side menu.
-[[menu.main]]
-identifier = "post"
-name = "博客"
-url = "/post/"
-weight = 1
-[[menu.main]]
-name = "标签"
-url = "/tags/"
-weight = 2
-
-[[menu.main]]
-name = "分类"
-url = "/categories/"
-weight = 2
-
-[[menu.main]]
-identifier = "about"
-name = "关于"
-url = "/about/"
-weight = 3
-
-[taxonomies]
-category = "categories"
-series = "series"
-tag = "tags"
-
-# [params.social]
-# bilibili = "http://example.com/"
-# github = "https://github.com/"
-# gitlab = "https://gitlab.com/"
-# instagram = "http://example.com/"
-# mail = "mailto:anon@example.com"
-# twitter = "https://twitter.com/"
-# weibo = "http://example.com/"
-# youtube = "https://youtube.com/"
-# zhihu = "http://example.com/"
-# any icon in layouts/partials/svg can be used by the name without the "-line.svg"
-
-[outputs]
-home = ["HTML", "RSS", "JSON"]
-
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/blog/"
+    weight = 1
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
