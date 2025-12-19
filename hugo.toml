@@ -1,5 +1,5 @@
 # 站点基础配置
-baseURL = "https://xiaopailang.com/"
+baseURL = "https://blog.piio.me/"
 title = "Pi 的龜屋"
 languageCode = "zh-cn"
 theme = "hugo-bearneo"
