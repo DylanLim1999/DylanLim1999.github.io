@@ -61,11 +61,16 @@ ignoreErrors = ["error-disable-taxonomy"]
 [menu]
   [[menu.main]]
     identifier = "blog"
-    name = "Blog"
+    name = "博客"
     url = "/blog/"
     weight = 1
   [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
+    identifier = "memos"
+    name = "碎碎念"
+    url = "/memos/"
     weight = 2
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 3
