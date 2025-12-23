@@ -149,67 +149,6 @@ layout: "single"
     border: 1px solid var(--border-color, #e5e7eb);
 }
 
-/* ===== 视频嵌入样式 ===== */
-.memo-video {
-    position: relative;
-    width: 100%;
-    margin-top: 12px;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #000;
-}
-
-.memo-video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-}
-
-.memo-video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.memo-video-cover {
-    position: relative;
-    cursor: pointer;
-    aspect-ratio: 16/9;
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.memo-video-cover::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.3);
-    transition: background 0.2s;
-}
-
-.memo-video-cover:hover::before {
-    background: rgba(0,0,0,0.1);
-}
-
-.memo-video-cover::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 68px;
-    height: 48px;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path fill="%23f00" d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.63-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"/><path fill="%23fff" d="M45 24 27 14v20"/></svg>') center/contain no-repeat;
-}
-
-.memo-video-cover.bilibili::after {
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><rect fill="%2300a1d6" width="68" height="48" rx="8"/><path fill="%23fff" d="M45 24 27 14v20"/></svg>') center/contain no-repeat;
-}
 
 /* ===== 加载更多按钮 ===== */
 .load-more-btn {
@@ -247,11 +186,146 @@ layout: "single"
 .memos-error {
     color: #ef4444;
 }
+
+/* ===== 链接预览卡片样式 ===== */
+.link-preview {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 12px;
+    background: var(--bg-color-primary, #fff);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    height: 90px;
+}
+
+.link-preview:hover {
+    border-color: var(--link-color, #028760);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+.link-preview-image {
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--bg-color-secondary, #f3f4f6) 0%, var(--border-color, #e5e7eb) 100%);
+    display: block;
+    border-radius: 0;
+}
+
+.link-preview-content {
+    flex: 1;
+    padding: 10px 14px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.link-preview-title {
+    font-size: 0.88em;
+    font-weight: 600;
+    color: var(--text-color-primary, #374151);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.3;
+}
+
+.link-preview-description {
+    font-size: 0.78em;
+    color: var(--text-color-tertiary, #6b7280);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.35;
+}
+
+.link-preview-site {
+    font-size: 0.72em;
+    color: var(--link-color, #028760);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.link-preview-site::before {
+    content: '🔗';
+    font-size: 0.85em;
+}
+
+.link-preview.loading {
+    height: auto;
+    padding: 20px;
+    justify-content: center;
+    color: var(--text-color-tertiary, #9ca3af);
+    font-size: 0.85em;
+    background: var(--bg-color-secondary, #f9fafb);
+}
+
+.link-preview.loading::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-color, #e5e7eb);
+    border-top-color: var(--link-color, #028760);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.link-preview.error {
+    display: none;
+}
+
+/* 无图片时的样式 */
+.link-preview.no-image {
+    background: linear-gradient(135deg, var(--bg-color-primary, #fff) 0%, var(--bg-color-secondary, #f9fafb) 100%);
+}
+
+.link-preview.no-image .link-preview-content {
+    padding: 14px 18px;
+}
+
+/* 响应式 */
+@media (max-width: 480px) {
+    .link-preview {
+        height: 80px;
+    }
+    .link-preview-image {
+        width: 80px;
+        height: 80px;
+    }
+    .link-preview-content {
+        padding: 8px 12px;
+    }
+    .link-preview-title {
+        font-size: 0.82em;
+    }
+    .link-preview-description {
+        font-size: 0.72em;
+        -webkit-line-clamp: 1;
+    }
+}
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const MEMOS_HOST = "https://memos.piio.me";
+    const LINK_PREVIEW_API = "https://link-preview.piio.me";
     const PAGE_SIZE = 20;
     
     let nextPageToken = "";
@@ -301,93 +375,85 @@ document.addEventListener("DOMContentLoaded", () => {
         return images;
     }
 
-    // 提取视频信息
-    function extractVideoInfo(text) {
-        const videos = [];
+    // 提取所有链接（排除图片）
+    function extractLinks(text) {
+        // 匹配 URL
+        const urlPattern = /https?:\/\/[^\s<>"'\)\]]+/g;
+        const matches = text.match(urlPattern) || [];
         
-        // YouTube
-        const youtubePatterns = [
-            /https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/g,
-            /https?:\/\/youtu\.be\/([a-zA-Z0-9_-]{11})/g
-        ];
-        youtubePatterns.forEach(pattern => {
-            let match;
-            while ((match = pattern.exec(text)) !== null) {
-                videos.push({
-                    type: 'youtube',
-                    id: match[1],
-                    url: match[0],
-                    thumbnail: `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`
-                });
-            }
+        // 过滤掉图片链接
+        const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.ico', '.bmp'];
+        return [...new Set(matches)].filter(url => {
+            const lowerUrl = url.toLowerCase();
+            return !imageExtensions.some(ext => lowerUrl.includes(ext));
         });
-        
-        // Bilibili
-        const bilibiliPattern = /https?:\/\/(?:www\.)?bilibili\.com\/video\/(BV[a-zA-Z0-9]+)/g;
-        let match;
-        while ((match = bilibiliPattern.exec(text)) !== null) {
-            videos.push({
-                type: 'bilibili',
-                id: match[1],
-                url: match[0]
-            });
-        }
-        
-        return videos;
     }
 
-    // 渲染视频嵌入
-    function renderVideoEmbed(video) {
-        if (video.type === 'youtube') {
-            return `
-                <div class="memo-video">
-                    <div class="memo-video-cover" 
-                         style="background-image: url('${video.thumbnail}')"
-                         onclick="this.innerHTML='<div class=\\'memo-video-wrapper\\'><iframe src=\\'https://www.youtube.com/embed/${video.id}?autoplay=1\\' allow=\\'autoplay; encrypted-media\\' allowfullscreen></iframe></div>'; this.onclick=null; this.style.cursor='default';">
-                    </div>
-                </div>
-            `;
-        } else if (video.type === 'bilibili') {
-            return `
-                <div class="memo-video">
-                    <div class="memo-video-wrapper">
-                        <iframe src="//player.bilibili.com/player.html?bvid=${video.id}&page=1&high_quality=1&danmaku=0&autoplay=0" 
-                                scrolling="no" allowfullscreen="true"></iframe>
-                    </div>
-                </div>
-            `;
-        }
-        return '';
-    }
-
-    // 将视频链接原地替换为嵌入代码
-    function replaceVideoUrls(text, videos) {
+    // 从内容中移除链接
+    function removeLinksFromContent(text, links) {
         let result = text;
-        videos.forEach(video => {
-            // 用占位符替换链接，稍后在HTML中替换为视频嵌入
-            result = result.replace(video.url, `{{VIDEO_EMBED_${video.id}}}`);
+        links.forEach(url => {
+            // 移除裸链接
+            result = result.replace(new RegExp(url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '');
         });
-        return result;
+        // 清理空的 Markdown 链接标记 []()
+        result = result.replace(/\[([^\]]*)\]\(\s*\)/g, '$1');
+        // 清理多余的空行
+        result = result.replace(/\n{3,}/g, '\n\n');
+        return result.trim();
+    }
+
+    // 获取链接预览数据
+    async function fetchLinkPreview(url) {
+        try {
+            const response = await fetch(`${LINK_PREVIEW_API}/?url=${encodeURIComponent(url)}`);
+            if (!response.ok) throw new Error('Failed to fetch');
+            return await response.json();
+        } catch (error) {
+            console.warn('Link preview failed for:', url, error);
+            return null;
+        }
+    }
+
+    // 渲染链接预览卡片
+    function renderLinkPreviewPlaceholder(url, index) {
+        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="link-preview loading" data-preview-url="${url}" data-preview-index="${index}">加载链接预览...</a>`;
+    }
+
+    // 更新链接预览卡片
+    function updateLinkPreview(element, data) {
+        if (!data || data.error) {
+            element.classList.remove('loading');
+            element.classList.add('error');
+            return;
+        }
+        
+        const hasImage = data.image && data.image.length > 0;
+        element.classList.remove('loading');
+        if (!hasImage) element.classList.add('no-image');
+        
+        element.innerHTML = `
+            ${hasImage ? `<img class="link-preview-image" src="${data.image}" alt="" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('no-image');">` : ''}
+            <div class="link-preview-content">
+                <div class="link-preview-title">${data.title || data.url}</div>
+                ${data.description ? `<div class="link-preview-description">${data.description}</div>` : ''}
+                <div class="link-preview-site">${data.siteName || new URL(data.url).hostname}</div>
+            </div>
+        `;
     }
 
     // 渲染单条动态
     function renderMemo(memo) {
         const time = formatRelativeTime(memo.displayTime || memo.createTime);
         
-        // 提取视频
-        const videos = extractVideoInfo(memo.content || '');
+        // 提取所有链接
+        const links = extractLinks(memo.content || '');
         
-        // 将视频链接替换为占位符
-        let processedContent = replaceVideoUrls(memo.content || '', videos);
+        // 从内容中移除链接
+        let processedContent = removeLinksFromContent(memo.content || '', links);
         
         // 解析 Markdown
         let content = marked.parse(processedContent);
-        
-        // 将占位符替换为实际的视频嵌入代码
-        videos.forEach(video => {
-            const embedHtml = renderVideoEmbed(video);
-            content = content.replace(`{{VIDEO_EMBED_${video.id}}}`, embedHtml);
-        });
         
         // 处理图片资源
         const images = processResources(memo);
@@ -409,6 +475,12 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>`;
         }
         
+        // 渲染链接预览占位符（只预览第一个链接）
+        let linkPreviewsHtml = '';
+        if (links.length > 0) {
+            linkPreviewsHtml = renderLinkPreviewPlaceholder(links[0], 0);
+        }
+        
         return `
             <div class="memo-card">
                 <div class="memo-header">
@@ -417,6 +489,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="memo-content">${content}</div>
                 ${imagesHtml}
+                ${linkPreviewsHtml}
             </div>
         `;
     }
@@ -458,6 +531,14 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 container.innerHTML = html;
             }
+            
+            // 异步加载链接预览
+            const previewElements = container.querySelectorAll('.link-preview.loading');
+            previewElements.forEach(async (element) => {
+                const url = element.dataset.previewUrl;
+                const data = await fetchLinkPreview(url);
+                updateLinkPreview(element, data);
+            });
             
             if (nextPageToken) {
                 loadMoreContainer.style.display = 'block';
