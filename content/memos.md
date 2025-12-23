@@ -199,7 +199,7 @@ layout: "single"
     text-decoration: none;
     color: inherit;
     transition: all 0.2s ease;
-    height: 90px;
+    height: 120px;
 }
 
 .link-preview:hover {
