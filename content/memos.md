@@ -210,12 +210,13 @@ layout: "single"
 
 .link-preview-image {
     flex-shrink: 0;
-    width: 90px;
-    height: 90px;
+    height: 100%;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     background: linear-gradient(135deg, var(--bg-color-secondary, #f3f4f6) 0%, var(--border-color, #e5e7eb) 100%);
     display: block;
     border-radius: 0;
+    border: none !important;
 }
 
 .link-preview-content {
@@ -303,10 +304,6 @@ layout: "single"
 /* 响应式 */
 @media (max-width: 480px) {
     .link-preview {
-        height: 80px;
-    }
-    .link-preview-image {
-        width: 80px;
         height: 80px;
     }
     .link-preview-content {
