@@ -325,6 +325,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const LINK_PREVIEW_API = "https://link-preview.piio.me";
     const PAGE_SIZE = 20;
     
+    // 配置 marked，启用 breaks 选项使换行符正确渲染
+    marked.setOptions({
+        breaks: true,  // 将单个换行符转换为 <br>
+        gfm: true      // 启用 GitHub Flavored Markdown
+    });
+    
     let nextPageToken = "";
     let isLoading = false;
     
