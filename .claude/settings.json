@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hugo *)",
+      "Bash(git *)",
+      "Bash(npm *)",
+      "Edit(content/**/*.md)",
+      "Write(content/**/*.md)",
+      "Read(content/**/*)",
+      "Read(themes/**/*)",
+      "Edit(hugo.toml)",
+      "Edit(layouts/**/*)"
+    ],
+    "deny": [
+      "Read(.env*)",
+      "Read(**/*secret*)",
+      "Bash(rm -rf *)",
+      "Bash(rm -rf ./*)"
+    ]
+  }
+}
